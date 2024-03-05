@@ -1,0 +1,68 @@
+class Solution {
+    int isDigitSumPalindrome(int n) {
+        int r=sumOfDigits(n);
+        int count=countOfDigits(r);
+        int[] forward=new int[count];
+        int[] backward=new int[count];
+        
+        
+        
+        for(int i=0; i<count; i++){
+            forward[i]=r%10;
+            r=r/10;
+        }
+        
+        // for(int i=count; i>0; i--){
+        //     backward[count-1]=r%10;
+        //     r=r/10;
+        // }
+        
+        for(int i=0; i<count; i++){
+            if(forward[i]!=forward[count-1-i]){
+                return 0;
+            }
+        }
+        return 1;
+    }
+    
+    int sumOfDigits(int x){
+        int sum=0;
+        int digit;
+        while(x!=0){
+        digit=x%10;
+        sum+=digit;
+        x=x/10;
+        }
+        return sum;
+    }
+    
+    int countOfDigits(int x){
+        int count=0;
+        while(x!=0){
+            x/=10;
+            count++;
+        }
+        return count;
+    }
+}
+
+
+
+/* This approach is a brute force and very lengthy and basic.
+Editorial - better approach
+
+They've named sum as newNumber and then found out its value by looping over elements and adding them to the newNum variable.
+now, n= newNum;
+And, then they've looped with while loop until n>0.
+while (n > 0) {
+            reversedNewNum = (reversedNewNum * 10) + (n % 10);
+            n /= 10;
+        }
+
+The above approach is a great way to create a number since each time we multiply we get from one digit number to two digit number and so on.
+
+
+
+
+
+*/
