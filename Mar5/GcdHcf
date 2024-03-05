@@ -1,0 +1,26 @@
+class Solution {
+    static Long[] lcmAndGcd(Long A , Long B) {
+      
+        Long hcf=gcd(A,B);
+        Long lcm =(A*B)/hcf;
+        
+        Long[] ans= {lcm, hcf};
+        return ans;
+    }
+    
+    static Long gcd(Long A, Long B){
+           if(B==0){
+               return A;
+           } 
+                return gcd(B, A%B);
+        }
+        
+        
+};
+
+
+/*
+Didn't consider the relationship between lcm and hcf.
+Referenced static from non static.
+
+*/
