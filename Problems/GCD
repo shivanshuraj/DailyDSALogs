@@ -1,0 +1,27 @@
+class Solution {
+    public static int gcd(int a, int b) {
+        int dividend;
+        int divisor;
+        if(b>a){
+            dividend=b;
+            divisor=a;
+        }else{
+            dividend=a;
+            divisor=b;
+        }
+        
+         int rem=dividend%divisor;
+         
+        //  for(int i=0;)
+           while(rem!=0){
+               dividend=divisor;
+               divisor=rem;
+               rem=dividend%divisor;
+               
+           }
+           return divisor;
+        }
+        
+    }
+
+        
