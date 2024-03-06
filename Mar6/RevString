@@ -1,0 +1,14 @@
+
+
+class Solution {
+    static String revStr(String S) {
+        StringBuilder rev=new StringBuilder("");
+        int l=S.length();
+        for(int i=l;i>0;i-- ){
+            rev=rev.append(S.charAt(i-1));
+        }
+        return rev.toString();
+    }
+}
+
+//It could have been solved using just string. But I used StringBuilder as it takes lesser time.
