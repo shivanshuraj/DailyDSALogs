@@ -1,0 +1,33 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class PrintDups {
+ static  void printDups(String str){
+HashMap<Character, Integer> map = new HashMap<>();
+
+for(int i=0; i<str.length(); i++){
+if(map.containsKey(str.charAt(i))){
+map.put(str.charAt(i), map.get(str.charAt(i))+1);
+}else{
+map.put(str.charAt(i), 1);
+}
+}
+
+for(Map.Entry<Character, Integer> mapEntry : map.entrySet()){
+if(mapEntry.getValue()>1){
+System.out.println(mapEntry.getKey() +" "+ "count= "+mapEntry.getValue());
+}
+
+}
+
+
+
+
+}
+public static void main(String[] args){
+String str="amanan";
+printDups(str);
+}
+}
+
+//Seen solution: Didn't knew HashMap really well. But, I's proud that I was able to reproduce the code with just two errors: bracket error and static method error.  Way to GO!
