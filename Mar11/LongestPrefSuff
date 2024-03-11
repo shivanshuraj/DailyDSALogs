@@ -1,0 +1,24 @@
+//The following is a BF approach and gives TLE.
+
+class Solution {
+    int lps(String s) {
+         int max=0;
+        StringBuilder pref= new StringBuilder();
+        StringBuilder suff= new StringBuilder();
+        // code here
+        for(int i=0; i<s.length()-1; i++){
+            pref.append(s.charAt(i));
+            suff.append(s.charAt(s.length()-i-1));
+            suff.reverse();
+            if(pref.toString().equals(suff.toString())){
+                if(pref.length()>max){
+                    max=pref.length();
+                }
+            }
+        }
+        return max;
+    }
+}
+
+Pattern?- two pointer approach you can say
+Mistakes?- I was adding index to the sb and not the character.
