@@ -1,0 +1,37 @@
+//Caution: This solution doesn't pass all test cases. Means its wrong appraoch. But, it passed 79/87. ha ha ha
+class Solution {
+    public boolean exist(char[][] board, String word) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        int len = word.length();
+        int m = board.length;
+        int n = board[0].length;
+        for (int i = 0; i < len; i++) {
+
+            if (map.containsKey(word.charAt(i))) {
+                map.put(word.charAt(i), map.get(word.charAt(i)) + 1);
+            } else {
+                map.put(word.charAt(i), 1);
+            }
+
+        }
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (map.containsKey(board[i][j])) {
+                    map.put(board[i][j], map.get(board[i][j]) - 1);
+
+                }
+            }
+
+        }
+
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            if (entry.getValue() > 0) {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+}
