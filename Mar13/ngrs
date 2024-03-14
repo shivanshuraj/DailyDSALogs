@@ -1,0 +1,30 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    public static void main(String[] args) throws java.lang.Exception
+    {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        char grade = 'z';
+        while (t > 0) {
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+            if (x < 50) {
+                grade = 'z';
+            }
+            else if (x >= 50 && y < 50) {
+                grade = 'f';
+            } else {
+                grade = 'a';
+            }
+
+            System.out.println(grade);
+
+            t--;
+        }
+
+    }
+}
