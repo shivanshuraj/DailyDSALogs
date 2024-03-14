@@ -1,0 +1,38 @@
+// Techmonastic coding round question
+
+package Java;
+
+import java.util.Scanner;
+
+/**
+ * ClockAngle
+ */
+public class ClockAngle {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String time=sc.next();
+
+        if(time.charAt(2)!=':' && time.length()<4){
+            System.out.println("Incorrect input.");
+        }else{
+            int hourHand=Integer.parseInt(time.substring(0,2));
+            int minHand=Integer.parseInt(time.substring(3,5));
+            
+            
+            int degMin=minHand*6;
+            int degHour=hourHand*30;
+            
+            if(minHand==12){
+                degMin=0;
+            }
+            if(hourHand==12){
+                degHour=0;
+            }
+
+            int output=degMin-degHour;
+            System.out.println(Math.abs(output));
+
+        }
+    }
+}
