@@ -1,4 +1,4 @@
-//silly mistakes committed. Leetcode biweekly contest
+//silly mistakes committed. Leetcode biweekly contest. Could have done it had I dry run the whole code.
 
 class Solution {
     public int sumOfEncryptedInt(int[] nums) {
