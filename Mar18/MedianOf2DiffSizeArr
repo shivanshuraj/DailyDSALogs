@@ -1,0 +1,30 @@
+//This is the first hard problem I solved on GFG in first submission.
+class GFG 
+{ 
+    static double medianOfArrays(int n, int m, int a[], int b[]) 
+    {
+        // Your Code Here
+        int[] c= new int[m+n];
+        for(int i=0; i<n; i++){
+            c[i]=a[i];
+        }
+        
+        int j=0;
+        for(int i=n; i<n+m; i++){
+            c[i]=b[j];
+            j++;
+        }
+        
+
+        double result;
+        Arrays.sort(c);
+ 
+        int o=c.length;
+        if(o%2==0){
+            result=(c[(o/2)-1]+c[o/2])/2.0;
+        }else{
+            result=c[o/2];
+        }
+        return result;
+    }
+}
