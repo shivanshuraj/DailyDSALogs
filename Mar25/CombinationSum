@@ -1,0 +1,39 @@
+//dass
+
+class Solution {
+    static ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+
+    static ArrayList<ArrayList<Integer>> combinationSum(ArrayList<Integer> A, int B) {
+        // Remove duplicates from A and sort it
+        Set<Integer> set = new HashSet<>(A);
+        A.clear();
+        A.addAll(set);
+        Collections.sort(A);
+        
+        // Clear previous results
+        result.clear();
+
+        // Start finding combinations
+        findCombinations(A, B, 0, new ArrayList<>(), 0);
+
+        return result;
+    }
+
+    static void findCombinations(ArrayList<Integer> A, int B, int sum, ArrayList<Integer> comb, int start) {
+        if (sum == B) {
+            result.add(new ArrayList<>(comb)); // Add a copy of comb to result
+            return;
+        }
+        
+        for (int i = start; i < A.size(); i++) {
+            int current = A.get(i);
+            if (sum + current > B) break; // Early exit if the sum exceeds B
+            
+            // Add current element to the combination
+            comb.add(current);
+            findCombinations(A, B, sum + current, comb, i); // Allow the same element to be reused
+            comb.remove(comb.size() - 1); // Backtrack
+        }
+    }
+}
+
