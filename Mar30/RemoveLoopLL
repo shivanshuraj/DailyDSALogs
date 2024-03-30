@@ -1,0 +1,47 @@
+//Test cases passed : 1 only
+
+class Solution
+{
+    //Function to remove a loop in the linked list.
+    public static void removeLoop(Node head){
+        // code here
+        // remove the loop without losing any nodes
+        HashSet<Integer> set= new HashSet<>();
+        Node curr= head;
+        Node prev=null;
+    
+        while(curr!=null){
+            if(!(set.add(curr.data))){
+                prev.next=null;
+                break;
+            }
+            prev=curr;
+            curr=curr.next;
+        }
+    }
+}
+
+
+//right solution; My mistake: I stored data of nodes in set instead of the node itself. I didn't consider the edge case in which my node in the list can have the same data and in that case my code won't work.
+// Another approach: Floyd's cycle detection algo
+
+class Solution
+{
+    //Function to remove a loop in the linked list.
+    public static void removeLoop(Node head){
+        // code here
+        // remove the loop without losing any nodes
+        HashSet<Node> set= new HashSet<>();
+        Node curr= head;
+        Node prev=null;
+    
+        while(curr!=null){
+            if(!(set.add(curr))){
+                prev.next=null;
+                break;
+            }
+            prev=curr;
+            curr=curr.next;
+        }
+    }
+}
