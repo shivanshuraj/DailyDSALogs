@@ -1,0 +1,30 @@
+//I did it. Now DSA is much more easier and simpler for me. Only becuase of following the right steps. The problem was not in my brain or DSA but in my approach. Hurrah!
+
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        int count=0;
+        ListNode curr=head;
+        // Node prev=null;
+        ListNode prev=head;
+
+        while(curr!=null){
+            count++;
+            curr=curr.next;
+        }
+
+        if(count==n){
+            ListNode temp=head.next;
+            prev.next=null;
+            head=temp;
+            return head;
+        }
+
+        for(int i=0; i<count-n-1; i++){
+            prev=prev.next;
+        }
+        //handlewhenprev=null
+        prev.next=prev.next.next;
+
+        return head;
+    }
+}
