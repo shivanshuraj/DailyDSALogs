@@ -1,0 +1,42 @@
+// Done by my own. Not the most optimized. But it works.
+class Intersect
+{
+    //Function to find intersection point in Y shaped Linked Lists.
+	int intersectPoint(Node head1, Node head2)
+	{
+	    int result = -1;
+         // code here
+         HashSet<Node> set = new HashSet<>();
+         
+         Node curr1=head1;
+         Node curr2=head2;
+         
+         while(curr1!=null || curr2!=null){
+             
+             if(!(set.add(curr1))){
+                 if(curr1!=null){
+                 result = curr1.data;
+                 break;
+                 }
+             }
+             
+             if(!(set.add(curr2))){
+                 if(curr2!=null){
+                 result = curr2.data;
+                 break;
+                 }
+             }
+             
+             if(curr1!=null){
+                 curr1=curr1.next;
+             }
+             
+             if(curr2!=null){
+                 curr2=curr2.next;
+             }
+         }
+         return result;
+	}
+}
+
+
