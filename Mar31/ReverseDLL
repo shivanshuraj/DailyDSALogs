@@ -1,4 +1,5 @@
 //Did it on my own - DIOMO
+//I should have handled the case in which the head is null or the list contains only one element.
 
 //{ Driver Code Starts
 //Initial Template for Java
