@@ -1,4 +1,5 @@
 //Did this after editorial.
+//Forgot conversion of string to number. And, switch case statements.
 //{ Driver Code Starts
 import java.util.*;
 import java.lang.*;
