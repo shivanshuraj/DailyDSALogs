@@ -1,0 +1,21 @@
+//couldn't do because I wasn't fluent with basics and when and how to apply them. I did had the intuition to solve. But, not the correct methods.
+
+class GfG{
+    //Function to reverse the queue.
+    public Queue<Integer> rev(Queue<Integer> q){
+        //add code here.
+        Stack<Integer> st = new Stack<>();
+        while(!q.isEmpty()){
+            int x= q.peek();
+            q.poll();
+            st.push(x);
+        }
+        
+        while(!st.isEmpty()){
+            int x= st.peek();
+            st.pop();
+            q.add(x);
+        }
+        return q;
+    }
+}
