@@ -1,0 +1,168 @@
+package Jun29;
+
+class DQueNode {
+    DQueNode prev;
+    DQueNode next;
+    int data;
+
+    DQueNode(int data) {
+        this.data = data;
+    }
+}
+
+public class Deque {
+    private DQueNode head;
+    private DQueNode tail;
+
+    void insert_first(int data) {
+        if (!isEmpty()) {
+            DQueNode newNode = new DQueNode(data);
+            newNode.next = head;
+            head.prev = newNode;
+            head = newNode;
+        } else {
+            DQueNode newNode = new DQueNode(data);
+            head = newNode;
+            tail = newNode;
+        }
+    }
+
+    void insert_last(int data) {
+        if (!isEmpty()) {
+            DQueNode newNode = new DQueNode(data);
+            newNode.prev = tail;
+            tail.next = newNode;
+            tail = newNode;
+        } else {
+            DQueNode newNode = new DQueNode(data);
+            head = newNode;
+            tail = newNode;
+        }
+    }
+
+    int remove_first() {
+        int result = 0;
+        if (!isEmpty()) {
+            if (head == tail) {
+                head = tail = null;
+            } else {
+                result = head.data;
+                head.next.prev = null;
+                head = head.next;
+            }
+
+        } else {
+            System.out.println("Deque is empty!");
+        }
+        return result;
+    }
+
+    int remove_last() {
+        int result = 0;
+        if (!isEmpty()) {
+            result = tail.data;
+            tail.prev.next = null;
+            tail.prev = null;
+
+        } else {
+            System.out.println("Deque is empty!");
+        }
+        return result;
+    }
+
+    int size() {
+        int count = 0;
+        DQueNode curr = head;
+
+        while (curr != null) {
+            count++;
+            curr = curr.next;
+        }
+        return count;
+    }
+
+    boolean isEmpty() {
+        return head == null;
+    }
+
+    void printDeque() {
+        DQueNode curr = head;
+        while (curr != null) {
+            System.out.println(curr.data);
+            curr = curr.next;
+        }
+    }
+
+}
+
+class XStack {
+    Deque mDeque = new Deque();
+
+    void push(int x) {
+        mDeque.insert_last(x);
+    }
+
+    int pop() {
+        return mDeque.remove_last();
+    }
+
+    int size() {
+        return mDeque.size();
+    }
+
+    boolean isEmpty() {
+        return mDeque.isEmpty();
+    }
+
+    void printStack() {
+        mDeque.printDeque();
+    }
+}
+
+class XQueue {
+    Deque myDeque = new Deque();
+
+    void enqueue(int x) {
+        myDeque.insert_last(x);
+    }
+
+    int dequeue() {
+        return myDeque.remove_first();
+    }
+
+    void printQueue() {
+        myDeque.printDeque();
+    }
+
+    int size() {
+        return myDeque.size();
+    }
+
+    boolean isEmpty() {
+        return myDeque.isEmpty();
+    }
+}
+
+class Main4 {
+    public static void main(String[] args) {
+        // Deque myDeque = new Deque();
+        // myDeque.insert_first(5);
+        // myDeque.insert_first(6);
+        // myDeque.remove_first();
+        // myDeque.printDeque();
+
+        XQueue xQueue = new XQueue();
+        xQueue.enqueue(7);
+        xQueue.enqueue(17);
+        xQueue.enqueue(27);
+        xQueue.dequeue();
+        xQueue.printQueue();
+
+        XStack xStack = new XStack();
+        xStack.push(9);
+        xStack.push(19);
+        xStack.push(29);
+        xStack.pop();
+        xStack.printStack();
+    }
+}
