@@ -1,0 +1,100 @@
+// I was able to do it but not in O(1). So, basically I failed. Did it again after seeing solution.
+package Jun29;
+
+class DLLNode {
+    DLLNode prev;
+    DLLNode next;
+    int data;
+
+    DLLNode(int data) {
+        this.data = data;
+    }
+}
+
+public class StackWithMid {
+    DLLNode head;
+    DLLNode mid;
+    int size;
+
+    void push(int x) {
+        DLLNode newNode = new DLLNode(x);
+        if (isEmpty()) {
+            head = newNode;
+            mid = newNode;
+            size++;
+
+            return;
+        }
+        head.next = newNode;
+        newNode.prev = head;
+        head = head.next;
+
+        if (size % 2 != 0) {
+            mid = mid.next;
+        }
+        size++;
+    }
+
+    int pop() {
+        int num = 0;
+        if (isEmpty()) {
+            System.out.println("Stack is empty. No node to remove.");
+            return -1;
+        }
+        num = head.data;
+        if(size==1){
+            head=null;
+            mid=null;
+        }else{
+            head.prev.next = null;
+            DLLNode temp=head.prev;
+            head.prev = null;
+            head=temp;
+        }
+        
+
+        if (size % 2 == 0) {
+            mid = mid.prev;
+        }
+
+        size--;
+        return num;
+    }
+
+    int findMiddle() {
+        return mid.data;
+    }
+
+    void deleteMiddle() {
+        mid.prev.next = mid.next;
+        mid.next.prev = mid.prev;
+
+        if (size % 2 == 0) {
+            mid = mid.prev;
+        } else {
+            mid = mid.next;
+        }
+        size--;
+    }
+
+    boolean isEmpty() {
+        return head == null;
+    }
+}
+
+class Main5 {
+    public static void main(String[] args) {
+        StackWithMid sWithMid = new StackWithMid();
+        sWithMid.push(1);
+        sWithMid.push(2);
+        sWithMid.push(3);
+        sWithMid.push(4);
+        sWithMid.push(5);
+        sWithMid.push(6);
+        System.out.println("Popped first " + sWithMid.pop());
+        System.out.println("Popped second: " + sWithMid.pop());
+        System.out.println("Current middle node: " + sWithMid.findMiddle());
+        sWithMid.deleteMiddle();
+        System.out.println("New middle node after deletion: " + sWithMid.findMiddle());
+    }
+}
